@@ -8,7 +8,7 @@ $(function(){
         console.log("closing")
     };
     ws.onopen = function() {
-        ws.send("connection opend. ")
+	ws.send("Started!")
     };
 
     $("#input").bind('click blur keydown keyup keypress change text',function(e){

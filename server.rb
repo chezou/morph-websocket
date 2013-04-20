@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 require 'em-websocket'
-require './Mykytea'
+require 'Mykytea'
 
 def show_tags(t)
   ret_str = ""
@@ -27,7 +27,7 @@ puts "Model loaded!"
 EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 51234) do |ws|
   ws.onopen{
     puts "connected"
-    ws.send "connected"
+    #ws.send "connected"
     connections.push(ws) unless connections.index(ws)
   }
   ws.onmessage{ |msg|
@@ -36,5 +36,5 @@ EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 51234) do |ws|
     ws.send msg
     #puts msg
   }
-  ws.onclose {puts "Connection closimg"}
+  ws.onclose {puts "Connection closing"}
 end
